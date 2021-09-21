@@ -1,0 +1,19 @@
+{
+  "name": "mini_shop",
+  "version": "1.0.0",
+  "description": "A simple nodejs e-commerce shop",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mide7/mini_shop.git"
+  },
+  "author": "haywhy",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mide7/mini_shop/issues"
+  },
+  "homepage": "https://github.com/mide7/mini_shop#readme"
+}
