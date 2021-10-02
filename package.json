@@ -7,7 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "server": "npm run server --prefix server",
     "client": "npm run dev --prefix zuhre",
-    "dev": "concurrently \"npm run server\" "
+    "dev": "concurrently \"npm run server\" \"npm run client\""
   },
   "repository": {
     "type": "git",
@@ -22,6 +22,7 @@
   "homepage": "https://github.com/mide7/mini_shop#readme",
   "dependencies": {},
   "devDependencies": {
+    "@types/express-session": "^1.17.4",
     "concurrently": "^6.2.1",
     "nodemon": "^2.0.12"
   }

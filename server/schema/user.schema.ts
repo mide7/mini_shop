@@ -16,3 +16,9 @@ export const loginUserSchema = object({
         password: string().required("Password is required").min(6, "Password too short, should be minimum 6 characters"),
     })
 })
+
+export const googleAuthSchema = object({
+    body: object({
+        tokenId: string().required("A token ID is required"),
+    })
+})

@@ -1,10 +1,18 @@
 import { Router } from "express"
-import { getAllProducts, postProduct } from "../controllers/products.controller"
+import { createProductSchema, patchProductSchema } from "./../schema/product.schema";
+import validateRequest from "../middlewares/validateRequest.middleware"
+import { getProducts, postProduct, deleteProduct, getOneProduct, patchProduct } from "../controllers/products.controller"
 
 const router = Router()
 
-router.get("/", getAllProducts)
+router.get("/", getProducts)
 
-router.post("/", postProduct)
+router.get("/:id", getOneProduct)
+
+router.post("/", validateRequest(createProductSchema), postProduct)
+
+router.patch("/:id", validateRequest(patchProductSchema), patchProduct)
+
+router.delete("/:id", deleteProduct)
 
 export default router;

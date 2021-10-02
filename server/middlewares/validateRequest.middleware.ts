@@ -10,7 +10,6 @@ const validate = (schema: AnySchema) => async (req: Request, res: Response, next
         })
         return next()
     } catch (error) {
-        console.log(error)
         res.status(400).json({ message: error.errors })
     }
 }
