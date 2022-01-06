@@ -1,3 +1,4 @@
+
 import { DocumentDefinition } from "mongoose";
 import UserModel, { User, UserInput } from "../models/users.model";
 
@@ -37,3 +38,17 @@ export async function findUserByIdWithCart(id: string) {
         throw new Error(error)
     }
 }
+
+export async function findUserShippingDetails(id: string) {
+    try {
+        return await UserModel
+            .findById(id)
+            .populate({ path: "shippingDetails" })
+    } catch (error) {
+        throw new Error(error)
+    }
+}
+
+
+
+

@@ -1,4 +1,5 @@
-import { Product } from "./products.model";
+import { shippingSchema, ShippingDetails } from "./shipping.model";
+import { cartSchema, Cart } from "./cart.model";
 import { Document, model, Schema } from "mongoose"
 import bcrypt from "bcrypt"
 
@@ -16,31 +17,11 @@ export interface User extends Document {
     password: string,
     createdAt: Date,
     updatedAt: Date,
-    cart: Cart[]
+    cart: Cart[],
+    shippingDetails: ShippingDetails,
     comparePassword(candidatePassword: string): Promise<boolean>
 }
 
-export interface Cart extends Document {
-    product: Product,
-    quantity: number
-}
-
-export interface CartInput extends Cart {
-    owner: string
-}
-
-const cartSchema = new Schema<Cart>({
-    product: {
-        type: Schema.Types.ObjectId,
-        ref: "Product",
-        required: true
-    },
-    quantity: {
-        type: Number,
-        required: true,
-        default: 1
-    }
-});
 
 const userSchema = new Schema<User>({
     firstname: {
@@ -63,7 +44,8 @@ const userSchema = new Schema<User>({
         type: String,
         required: true
     },
-    cart: [cartSchema]
+    cart: [cartSchema],
+    shippingDetails: shippingSchema
 }, { timestamps: true })
 
 userSchema.methods.comparePassword = async function (candidatePassword) {
@@ -91,6 +73,7 @@ userSchema.pre("save", async function (next) {
 })
 
 const UserModel = model<User>("User", userSchema)
-export const CartModel = model<Cart>("Cart", cartSchema)
+
+
 
 export default UserModel

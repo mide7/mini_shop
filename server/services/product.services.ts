@@ -38,7 +38,7 @@ export async function updateProduct(id: string, body: Product) {
     try {
         return await ProductModel.findOneAndUpdate(
             { _id: id },
-            { name: body.name, description: body.description, brand: body.brand, category: body.category }
+            { name: body.name, description: body.description, brand: body.brand, category: body.category, price: body.price }
         )
     } catch (error) {
         throw new Error(error)

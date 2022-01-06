@@ -1,4 +1,4 @@
-import { Cart, CartInput, CartModel } from "../models/users.model";
+import CartModel, { CartInput } from "../models/cart.model";
 import { findUserById, findUserByIdWithCart } from "./user.services";
 
 export async function addProductToCart(input: CartInput) {

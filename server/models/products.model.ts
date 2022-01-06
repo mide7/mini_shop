@@ -6,6 +6,7 @@ export interface Product extends Document {
     brand: Schema.Types.ObjectId,
     category: Schema.Types.ObjectId,
     description: string,
+    price: number
 }
 
 const productSchema = new Schema<Product>({
@@ -26,6 +27,11 @@ const productSchema = new Schema<Product>({
     },
     description: {
         type: String,
+        required: true
+    },
+    price: {
+        type: Number,
+        required: true
     }
 }, { timestamps: true })
 
