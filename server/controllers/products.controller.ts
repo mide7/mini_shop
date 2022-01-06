@@ -1,6 +1,6 @@
 import { omit } from "lodash";
 import { Request, Response } from "express"
-import { createProduct, findAllProducts, findProductByID, findProductByName, updateProduct, removeProduct } from "../services/Product.services"
+import { createProduct, findAllProducts, findProductByID, findProductByName, updateProduct, removeProduct } from "../services/product.services"
 
 
 export const postProduct = async (req: Request, res: Response) => {

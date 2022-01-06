@@ -1,16 +1,18 @@
 import express from "express";
-import connect from "./db/connect";
 import dotenv from "dotenv";
 import csurf from "csurf";
+import session from "express-session";
+import cors from "cors";
+import MongoDBStore from "connect-mongodb-session";
+import connect from "./db/connect";
+
+import categoryRoutes from "./routes/categories.routes";
 import productRoutes from "./routes/products.routes";
 import authRoutes from "./routes/auth.routes";
 import brandRoutes from "./routes/brands.routes";
 import cartRoutes from "./routes/cart.routes";
 import purchaseRoutes from "./routes/purchase.routes";
-import categoryRoutes from "./routes/categories.routes";
-import session from "express-session";
-import MongoDBStore from "connect-mongodb-session";
-import cors from "cors";
+
 const mongoStore = MongoDBStore(session);
 
 const app: express.Application = express();
@@ -39,8 +41,8 @@ app.use(
     store: new mongoStore({
       uri: process.env.DBURI,
       collection: process.env.SESSIONCOLLECTION,
-      databaseName: process.env.DBNAME
-    })
+      databaseName: process.env.DBNAME,
+    }),
   })
 );
 // app.use(csrfProtection)
